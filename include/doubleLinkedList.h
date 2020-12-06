@@ -1,9 +1,13 @@
 #pragma once
 #include "doubleLinkedListNode.h"
+#include <iostream>
 
 /*! \class Double Linked List
     \brief A double linked list data structure
 */
+using std::cout;
+using std::endl;
+using std::cin;
 
 template <class G>
 class DoubleLinkedList
@@ -16,8 +20,7 @@ private:
 
 public:
     DoubleLinkedList();
-    void push(G newElement);
-    G pop();
+
     void addFront(G newElement);
     void addBack(G newElement);
     void addAfterCurrent(G newElement);
@@ -25,7 +28,10 @@ public:
 
     void popCurrent();
     void popBack();
-    void popFront();
+    G popFront();
+
+    void traverseForward();
+    void traverseBackward();
 
     bool empty();
 };
@@ -50,7 +56,7 @@ void DoubleLinkedList<G>::addFront(G newElement)
     else {
         front->setNext(tmp);
         front = tmp;
-        back = tmp;
+        back = tmp; // Do I need this?
         current = tmp;
     }
 
@@ -59,14 +65,16 @@ void DoubleLinkedList<G>::addFront(G newElement)
 template<class G>
 void DoubleLinkedList<G>::addBack(G newElement)
 {   
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement));
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, nullptr, back));
     if (empty()) {
         front = tmp;
         back = tmp;
         current = tmp;
     }
     else {
-        back
+        back->setPrev(tmp);
+        front = tmp; // Do I need this?
+        back = tmp;
         current = tmp;
     }
 }
@@ -83,10 +91,39 @@ template<class G>
 void DoubleLinkedList<G>::popCurrent()
 {
 
+    size--;
 }
 
 template<class G>
-void DoubleLinkedList<G>::popFront()
+void DoubleLinkedList<G>::popBack()
+{
+
+    size--;
+}
+
+template<class G>
+G DoubleLinkedList<G>::popFront()
+{
+    if (size == 0) {
+        cout << "Sorry there is nothing to remove" << endl;
+    }
+    else {
+        G result = front->getData();
+        shared_ptr<DoubleLinkedListNode<G>> tmp = front;
+        front = front->getPrev();
+        current = tmp->getPrev();
+        size--;
+        return result;
+    }
+}
+
+template<class G>
+void DoubleLinkedList<G>::traverseForward()
+{
+}
+
+template<class G>
+void DoubleLinkedList<G>::traverseBackward()
 {
 }
 
