@@ -10,13 +10,44 @@ class DoubleLinkedList
 {
 private:
     unsigned int size; //!< Number of elements in the dll
-    shared_ptr<doubleLinkedListNode<G>>  head;
-    shared_ptr<doubleLinkedListNode<G>> tail;
+    shared_ptr<DoubleLinkedListNode<G>> front;
+    shared_ptr<DoubleLinkedListNode<G>> back;
+    shared_ptr<DoubleLinkedListNode<G>> current;
 
 public:
     DoubleLinkedList();
     void push(G newElement);
     G pop();
-    bool empy();
+    bool empty();
 };
 
+template<class G>
+DoubleLinkedList<G>::DoubleLinkedList()
+{
+    front = nullptr;
+    back = nullptr;
+    current = nullptr;
+    size = 0;
+}
+
+template<class G>
+void DoubleLinkedList<G>::push(G newElement)
+{
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement));
+    if (empty()) {
+        head = tmp;
+        tail = tmp;
+        current = tmp;
+    }
+    else() {
+
+    }
+
+    size++;
+}
+
+template<class G>
+bool DoubleLinkedList<G>::empty()
+{
+    return size == 0;
+}

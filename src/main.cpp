@@ -18,7 +18,7 @@
 
 void main() /** Entry point for the application */
 {
-	DoubleLinkedList myList;
+	DoubleLinkedList<std::string> myList;
 	
 	_CrtDumpMemoryLeaks(); // Look in the output window for a report
 	system("pause");
