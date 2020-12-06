@@ -18,6 +18,15 @@ public:
     DoubleLinkedList();
     void push(G newElement);
     G pop();
+    void addFront(G newElement);
+    void addBack(G newElement);
+    void addAfterCurrent(G newElement);
+    void addBeforeCurrent(G newElement);
+
+    void popCurrent();
+    void popBack();
+    void popFront();
+
     bool empty();
 };
 
@@ -29,21 +38,56 @@ DoubleLinkedList<G>::DoubleLinkedList()
     current = nullptr;
     size = 0;
 }
-
 template<class G>
-void DoubleLinkedList<G>::push(G newElement)
+void DoubleLinkedList<G>::addFront(G newElement)
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement));
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, nullptr));
     if (empty()) {
-        head = tmp;
-        tail = tmp;
+        front = tmp;
+        back = tmp;
         current = tmp;
     }
-    else() {
-
+    else {
+        front->setNext(tmp);
+        front = tmp;
+        back = tmp;
+        current = tmp;
     }
 
     size++;
+}
+template<class G>
+void DoubleLinkedList<G>::addBack(G newElement)
+{   
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement));
+    if (empty()) {
+        front = tmp;
+        back = tmp;
+        current = tmp;
+    }
+    else {
+        back
+        current = tmp;
+    }
+}
+template<class G>
+void DoubleLinkedList<G>::addAfterCurrent(G newElement)
+{
+}
+template<class G>
+void DoubleLinkedList<G>::addBeforeCurrent(G newElement)
+{
+}
+
+template<class G>
+void DoubleLinkedList<G>::popCurrent()
+{
+
+}
+
+template<class G>
+void DoubleLinkedList<G>::popFront()
+{
 }
 
 template<class G>

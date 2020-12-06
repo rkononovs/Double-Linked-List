@@ -20,6 +20,9 @@ void main() /** Entry point for the application */
 {
 	DoubleLinkedList<std::string> myList;
 	
+	myList.addFront("Help");
+
+
 	_CrtDumpMemoryLeaks(); // Look in the output window for a report
 	system("pause");
 }
