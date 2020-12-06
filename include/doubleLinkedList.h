@@ -1,17 +1,22 @@
 #pragma once
+#include "doubleLinkedListNode.h"
 
 /*! \class Double Linked List
     \brief A double linked list data structure
 */
 
-
-using namespace std;
-
+template <class G>
 class DoubleLinkedList
 {
-private :
+private:
+    unsigned int size; //!< Number of elements in the dll
+    shared_ptr<doubleLinkedListNode<G>>  head;
+    shared_ptr<doubleLinkedListNode<G>> tail;
 
-public :
-
+public:
+    DoubleLinkedList();
+    void push(G newElement);
+    G pop();
+    bool empy();
 };
 
