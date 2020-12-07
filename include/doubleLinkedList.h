@@ -27,7 +27,7 @@ public:
     void pushAfterCurrent(G newElement);
     void pushBeforeCurrent(G newElement);
 
-    void popCurrent();
+    G popCurrent();
     G popBack();
     G popFront();
 
@@ -60,7 +60,10 @@ void DoubleLinkedList<G>::pushFront(G newElement)
         current = tmp;
     }
     else {
+       // front->setNext(tmp);
+        front->setNext(tmp); //!< Set the previous fronts node's next node to new front node
         front = tmp;
+
     }
 
     size++;
@@ -75,6 +78,7 @@ void DoubleLinkedList<G>::pushBack(G newElement)
         current = tmp;
     }
     else {
+        back->setPrev(tmp); //!< Set the previous back node's previous node to new back node
         back = tmp;
     }
 
@@ -83,6 +87,13 @@ void DoubleLinkedList<G>::pushBack(G newElement)
 template<class G>
 void DoubleLinkedList<G>::pushAfterCurrent(G newElement)
 {
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, back));
+    if (empty()) { //!< Sanity check
+        cout << "Cannot add after nothing." << endl;
+    }
+    else {
+
+    }
 }
 template<class G>
 void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
@@ -90,10 +101,42 @@ void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
 }
 
 template<class G>
-void DoubleLinkedList<G>::popCurrent()
+G DoubleLinkedList<G>::popCurrent()
 {
+    G result;
+    if (size == 0) {
+        result = "Sorry there is nothing to remove";
+    }
+    else if (size == 1) {
+        result = current->getData();
 
-    size--;
+        front = nullptr;
+        back = nullptr;
+        current = nullptr;
+
+        size--;
+    }
+    else {
+        result = current->getData();
+
+        
+        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev();
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext();
+
+        if (tmpPrev != nullptr) {
+            tmpPrev->setNext(current->getNext());
+        }
+        else {
+            back = tmpNext;
+        }
+        
+        tmpNext->setPrev(current->getPrev());
+
+        size--;
+    }
+
+
+    return result;
 }
 
 template<class G>
