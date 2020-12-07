@@ -20,6 +20,7 @@ private:
 
 public:
     DoubleLinkedList();
+    ~DoubleLinkedList();
 
     void addFront(G newElement);
     void addBack(G newElement);
@@ -32,7 +33,8 @@ public:
 
     void traverseForward();
     void traverseBackward();
-
+    
+    unsigned int getSize();
     bool empty();
 };
 
@@ -43,6 +45,11 @@ DoubleLinkedList<G>::DoubleLinkedList()
     back = nullptr;
     current = nullptr;
     size = 0;
+}
+template<class G>
+DoubleLinkedList<G>::~DoubleLinkedList()
+{
+    cout << "TESTING" << endl;
 }
 template<class G>
 void DoubleLinkedList<G>::addFront(G newElement)
@@ -56,7 +63,6 @@ void DoubleLinkedList<G>::addFront(G newElement)
     else {
         front->setNext(tmp);
         front = tmp;
-        back = tmp; // Do I need this?
         current = tmp;
     }
 
@@ -73,7 +79,6 @@ void DoubleLinkedList<G>::addBack(G newElement)
     }
     else {
         back->setPrev(tmp);
-        front = tmp; // Do I need this?
         back = tmp;
         current = tmp;
     }
@@ -107,12 +112,20 @@ G DoubleLinkedList<G>::popFront()
     if (size == 0) {
         cout << "Sorry there is nothing to remove" << endl;
     }
-    else {
-        G result = front->getData();
-        shared_ptr<DoubleLinkedListNode<G>> tmp = front;
-        front = front->getPrev();
-        current = tmp->getPrev();
+    else if(size == 1){
+        G result = front->getData(); //!< Get result from front node
+        front = nullptr;
+        back = nullptr;
+        current = nullptr;
         size--;
+        return result;
+    }
+    else {
+        G result = front->getData(); //!< Get result from front node
+        shared_ptr<DoubleLinkedListNode<G>> tmp = front; //!< Make current front node as tmp
+        current = front->getPrev(); //!< Set fronts node previous node as new current node
+        front = front->getPrev(); //!< Set fronts node previous node as new front node
+        size--; // Decrement list size
         return result;
     }
 }
@@ -125,6 +138,12 @@ void DoubleLinkedList<G>::traverseForward()
 template<class G>
 void DoubleLinkedList<G>::traverseBackward()
 {
+}
+
+template<class G>
+unsigned int DoubleLinkedList<G>::getSize()
+{
+    return size;
 }
 
 template<class G>

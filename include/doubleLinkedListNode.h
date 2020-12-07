@@ -15,8 +15,10 @@ private:
 	shared_ptr<DoubleLinkedListNode<G>> prev; //!< Previous element in the dll
 public:
 	DoubleLinkedListNode(G newData, shared_ptr<DoubleLinkedListNode<G>> prev, shared_ptr<DoubleLinkedListNode<G>> next);
+	~DoubleLinkedListNode();
 
 	G getData();
+
 	shared_ptr<DoubleLinkedListNode<G>> getNext();
 	shared_ptr<DoubleLinkedListNode<G>> getPrev();
 
@@ -25,11 +27,17 @@ public:
 };
 
 template<class G>
-DoubleLinkedListNode<G>::DoubleLinkedListNode(G newData, shared_ptr<DoubleLinkedListNode<G>> prev, shared_ptr<DoubleLinkedListNode<G>> next)
+DoubleLinkedListNode<G>::DoubleLinkedListNode(G newData, shared_ptr<DoubleLinkedListNode<G>> newPrev, shared_ptr<DoubleLinkedListNode<G>> newNext)
 {
 	data = newData;
-	next = next;
-	prev = prev;
+	next = newNext;
+	prev = newPrev;
+}
+
+template<class G>
+DoubleLinkedListNode<G>::~DoubleLinkedListNode()
+{
+	std::cout << "TESTING" << std::endl;
 }
 
 template<class G>
