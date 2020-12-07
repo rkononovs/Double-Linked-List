@@ -21,14 +21,17 @@ void main() /** Entry point for the application */
 	DoubleLinkedList<std::string> myList;
 	
 	myList.addFront("Help");
-	myList.addFront("Tasukete");
 	myList.addFront("Me");
+	myList.addFront("Faith");
+	myList.addBack("Please");
+
+	std::cout << myList.popBack() << std::endl;
 
 	std::cout << myList.popFront() << std::endl;
 	std::cout << myList.popFront() << std::endl;
 	std::cout << myList.popFront() << std::endl;
+
 	std::cout << myList.getSize() << std::endl;
-	std::cout << myList.popFront() << std::endl;
 
 	_CrtDumpMemoryLeaks(); // Look in the output window for a report
 	system("pause");

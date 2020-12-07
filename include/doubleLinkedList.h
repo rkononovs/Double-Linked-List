@@ -28,7 +28,7 @@ public:
     void addBeforeCurrent(G newElement);
 
     void popCurrent();
-    void popBack();
+    G popBack();
     G popFront();
 
     void traverseForward();
@@ -77,6 +77,8 @@ void DoubleLinkedList<G>::addBack(G newElement)
     else {
         back = tmp;
     }
+
+    size++;
 }
 template<class G>
 void DoubleLinkedList<G>::addAfterCurrent(G newElement)
@@ -95,10 +97,28 @@ void DoubleLinkedList<G>::popCurrent()
 }
 
 template<class G>
-void DoubleLinkedList<G>::popBack()
+G DoubleLinkedList<G>::popBack()
 {
+    G result;
+    if (size == 0) {
+        result = "Sorry there is nothing to remove";
+    }
+    else if (size == 1) {
+        result = back->getData();  //!< Get result from back node
 
-    size--;
+        front = nullptr;
+        back = nullptr;
+        current = nullptr;
+
+        size--; //!< Decrement list size
+    }
+    else {
+        result = back->getData(); //!< Get result from back node
+        back = back->getNext(); //!< Set back node next node as new back node
+        size--; //!< Decrement list size
+    }
+
+    return result;
 }
 
 template<class G>
@@ -110,17 +130,17 @@ G DoubleLinkedList<G>::popFront()
     }
     else if(size == 1){
         result = front->getData(); //!< Get result from front node
+
         front = nullptr;
         back = nullptr;
         current = nullptr;
-        size--;
+
+        size--; //!< Decrement list size
     }
     else {
         result = front->getData(); //!< Get result from front node
-        //shared_ptr<DoubleLinkedListNode<G>> tmp = front; //!< Make current front node as tmp
-        // current = front->getPrev(); //!< Set fronts node previous node as new current node
         front = front->getPrev(); //!< Set fronts node previous node as new front node
-        size--; // Decrement list size
+        size--; //!< Decrement list size
     }
     return result;
 }

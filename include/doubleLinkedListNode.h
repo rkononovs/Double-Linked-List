@@ -37,7 +37,6 @@ DoubleLinkedListNode<G>::DoubleLinkedListNode(G newData, shared_ptr<DoubleLinked
 template<class G>
 DoubleLinkedListNode<G>::~DoubleLinkedListNode()
 {
-	std::cout << "TESTING" << std::endl;
 }
 
 template<class G>
