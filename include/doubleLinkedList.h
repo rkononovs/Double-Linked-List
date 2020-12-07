@@ -206,7 +206,7 @@ void DoubleLinkedList<G>::traverseForward()
             current = current->getNext();
         }
         else {
-            cout << "Cannot traverse further." << endl;
+            cout << "Cannot traverse further at the front." << endl;
         }
     }
 }
@@ -214,6 +214,17 @@ void DoubleLinkedList<G>::traverseForward()
 template<class G>
 void DoubleLinkedList<G>::traverseBackward()
 {
+    if (empty()) {
+        cout << "Cannot traverse nothing." << endl;
+    }
+    else {
+        if (current != back) {
+            current = current->getPrev();
+        }
+        else {
+            cout << "Cannot traverse further at the back." << endl;
+        }
+    }
 }
 
 template<class G>

@@ -31,6 +31,15 @@ void main() /** Entry point for the application */
 	myList.traverseForward();
 	myList.traverseForward();
 	myList.traverseForward();
+
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+
 	cout << myList.popCurrent() << endl;
 
 
