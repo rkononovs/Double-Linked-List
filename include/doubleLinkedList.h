@@ -34,6 +34,10 @@ public:
     void traverseForward();
     void traverseBackward();
     
+    G getFront();
+    G getCurrent();
+    G getBack();
+
     unsigned int getSize();
     bool empty();
 };
@@ -225,6 +229,48 @@ void DoubleLinkedList<G>::traverseBackward()
             cout << "Cannot traverse further at the back." << endl;
         }
     }
+}
+
+template<class G>
+G DoubleLinkedList<G>::getFront()
+{
+    G result;
+    if (empty()) {
+        result = "There is nothing.";
+    }
+    else {
+        result = front->getData();
+    }
+
+    return result;
+}
+
+template<class G>
+G DoubleLinkedList<G>::getCurrent()
+{
+    G result;
+    if (empty()) {
+        result = "There is nothing.";
+    }
+    else {
+        result = current->getData();
+    }
+
+    return result;
+}
+
+template<class G>
+G DoubleLinkedList<G>::getBack()
+{
+    G result;
+    if (empty()) {
+        result = "There is nothing.";
+    }
+    else {
+        result = back->getData();
+    }
+
+    return result;
 }
 
 template<class G>
