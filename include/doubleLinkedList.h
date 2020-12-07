@@ -129,8 +129,15 @@ G DoubleLinkedList<G>::popCurrent()
         else {
             back = tmpNext;
         }
+
+        if (tmpNext != nullptr) {
+            tmpNext->setPrev(current->getPrev());
+        }
+        else {
+            front = tmpNext;
+        }
         
-        tmpNext->setPrev(current->getPrev());
+        
 
         size--;
     }
@@ -191,6 +198,17 @@ G DoubleLinkedList<G>::popFront()
 template<class G>
 void DoubleLinkedList<G>::traverseForward()
 {
+    if (empty()) {
+        cout << "Cannot traverse nothing." << endl;
+    }
+    else {
+        if (current != front) {
+            current = current->getNext();
+        }
+        else {
+            cout << "Cannot traverse further." << endl;
+        }
+    }
 }
 
 template<class G>
