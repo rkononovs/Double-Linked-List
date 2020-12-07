@@ -22,10 +22,10 @@ public:
     DoubleLinkedList();
     ~DoubleLinkedList();
 
-    void addFront(G newElement);
-    void addBack(G newElement);
-    void addAfterCurrent(G newElement);
-    void addBeforeCurrent(G newElement);
+    void pushFront(G newElement);
+    void pushBack(G newElement);
+    void pushAfterCurrent(G newElement);
+    void pushBeforeCurrent(G newElement);
 
     void popCurrent();
     G popBack();
@@ -51,7 +51,7 @@ DoubleLinkedList<G>::~DoubleLinkedList()
 {
 }
 template<class G>
-void DoubleLinkedList<G>::addFront(G newElement)
+void DoubleLinkedList<G>::pushFront(G newElement)
 {
     shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, nullptr));
     if (empty()) {
@@ -66,7 +66,7 @@ void DoubleLinkedList<G>::addFront(G newElement)
     size++;
 }
 template<class G>
-void DoubleLinkedList<G>::addBack(G newElement)
+void DoubleLinkedList<G>::pushBack(G newElement)
 {   
     shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, nullptr, back));
     if (empty()) {
@@ -81,11 +81,11 @@ void DoubleLinkedList<G>::addBack(G newElement)
     size++;
 }
 template<class G>
-void DoubleLinkedList<G>::addAfterCurrent(G newElement)
+void DoubleLinkedList<G>::pushAfterCurrent(G newElement)
 {
 }
 template<class G>
-void DoubleLinkedList<G>::addBeforeCurrent(G newElement)
+void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
 {
 }
 

@@ -20,10 +20,10 @@ void main() /** Entry point for the application */
 {
 	DoubleLinkedList<std::string> myList;
 	
-	myList.addFront("Help");
-	myList.addFront("Me");
-	myList.addFront("Faith");
-	myList.addBack("Please");
+	myList.pushFront("Help");
+	myList.pushFront("Me");
+	myList.pushFront("Faith");
+	myList.pushBack("Please");
 
 	std::cout << myList.popBack() << std::endl;
 
