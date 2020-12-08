@@ -14,37 +14,42 @@ class DoubleLinkedList
 {
 private:
     unsigned int size; //!< Number of elements in the dll
-    shared_ptr<DoubleLinkedListNode<G>> front;
-    shared_ptr<DoubleLinkedListNode<G>> back;
-    shared_ptr<DoubleLinkedListNode<G>> current;
+    shared_ptr<DoubleLinkedListNode<G>> front; //!< Shared pointer to the front node in the dll.
+    shared_ptr<DoubleLinkedListNode<G>> back; //!< Shared pointer to the back node in the dll.
+    shared_ptr<DoubleLinkedListNode<G>> current; //!< Shared pointer to the current node in the dll.
 
 public:
-    DoubleLinkedList();
-    ~DoubleLinkedList();
+    DoubleLinkedList(); //!< Default constructor
+    ~DoubleLinkedList(); //!< Default destructor
 
+    //! Node pushing methods
     void pushFront(G newElement);
     void pushBack(G newElement);
     void pushAfterCurrent(G newElement);
     void pushBeforeCurrent(G newElement);
 
+    //! Node popping methods
     G popCurrent();
     G popBack();
     G popFront();
 
+    //! Node traversal methods
     void traverseForward();
     void traverseBackward();
     
+    //! Node getters
     G getFront();
     G getCurrent();
     G getBack();
 
-    unsigned int getSize();
+    unsigned int getSize(); //!< Size getter
     bool empty();
 };
 
 template<class G>
-DoubleLinkedList<G>::DoubleLinkedList()
+DoubleLinkedList<G>::DoubleLinkedList() 
 {
+    //! Initialize everything as null
     front = nullptr;
     back = nullptr;
     current = nullptr;
@@ -55,37 +60,37 @@ DoubleLinkedList<G>::~DoubleLinkedList()
 {
 }
 template<class G>
-void DoubleLinkedList<G>::pushFront(G newElement)
+void DoubleLinkedList<G>::pushFront(G newElement) //!< Adds a node to the front/head of the list
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmpFront(new DoubleLinkedListNode<G>(newElement, front, nullptr));
-    if (empty()) {
+    shared_ptr<DoubleLinkedListNode<G>> tmpFront(new DoubleLinkedListNode<G>(newElement, front, nullptr)); //!< Initialize new node
+    if (empty()) { //!< If list is empty set everything as new node
         front = tmpFront;
         back = tmpFront;
         current = tmpFront;
     }
-    else {        
+    else {
        front->setNext(tmpFront); //!< Set the previous fronts node's next node to new front node
-       front = tmpFront;
+       front = tmpFront; //!< Set new node as new front
 
     }
 
-    size++;
+    size++; //!< Increment size of the list
 }
 template<class G>
-void DoubleLinkedList<G>::pushBack(G newElement)
+void DoubleLinkedList<G>::pushBack(G newElement) //!< Adds a node to the back/tail of the list
 {   
-    shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, nullptr, back));
-    if (empty()) {
+    shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, nullptr, back)); //!< Initialize new node
+    if (empty()) { //!< If list is empty set everything as new node
         front = tmpBack;
         back = tmpBack;
         current = tmpBack;
     }
     else {
         back->setPrev(tmpBack); //!< Set the previous back's node's previous node to new back node
-        back = tmpBack;
+        back = tmpBack; //!< Set new node as new back
     }
 
-    size++;
+    size++; //!< Increment size of the list
 }
 template<class G>
 void DoubleLinkedList<G>::pushAfterCurrent(G newElement) // FIX FUNCTION
@@ -225,42 +230,42 @@ G DoubleLinkedList<G>::popFront() //!< Removes front node
 }
 
 template<class G>
-void DoubleLinkedList<G>::traverseForward()
+void DoubleLinkedList<G>::traverseForward() //!< Function that moves to the next node in the list
 {
-    if (empty()) {
+    if (empty()) { //!< If list empty print generic message
         cout << "Cannot traverse nothing." << endl;
     }
     else {
-        if (current != front) {
+        if (current != front) { //!< Changes current node if it's not at the front
             current = current->getNext();
         }
-        else {
+        else { //!< If cannot travel further print generic message
             cout << "Cannot traverse further at the front." << endl;
         }
     }
 }
 
 template<class G>
-void DoubleLinkedList<G>::traverseBackward()
+void DoubleLinkedList<G>::traverseBackward() //!< Function that moves to the previous node in the list
 {
-    if (empty()) {
+    if (empty()) { //!< If list empty print generic message
         cout << "Cannot traverse nothing." << endl;
     }
     else {
-        if (current != back) {
+        if (current != back) { //!< Changes current node if it's not at the back
             current = current->getPrev();
         }
-        else {
+        else { //!< If cannot travel further print generic message
             cout << "Cannot traverse further at the back." << endl;
         }
     }
 }
 
 template<class G>
-G DoubleLinkedList<G>::getFront()
+G DoubleLinkedList<G>::getFront() //!< Function that returns front's/head's node's data
 {
     G result;
-    if (empty()) {
+    if (empty()) { //!< If list empty print generic message
         result = "There is nothing.";
     }
     else {
@@ -271,10 +276,10 @@ G DoubleLinkedList<G>::getFront()
 }
 
 template<class G>
-G DoubleLinkedList<G>::getCurrent()
+G DoubleLinkedList<G>::getCurrent() //!< Function that returns current's node's data
 {
     G result;
-    if (empty()) {
+    if (empty()) { //!< If list empty print generic message
         result = "There is nothing.";
     }
     else {
@@ -285,10 +290,10 @@ G DoubleLinkedList<G>::getCurrent()
 }
 
 template<class G>
-G DoubleLinkedList<G>::getBack()
+G DoubleLinkedList<G>::getBack() //!< Function that returns back's/tail's node's data
 {
     G result;
-    if (empty()) {
+    if (empty()) { //!< If list empty print generic message
         result = "There is nothing.";
     }
     else {
@@ -299,13 +304,13 @@ G DoubleLinkedList<G>::getBack()
 }
 
 template<class G>
-unsigned int DoubleLinkedList<G>::getSize()
+unsigned int DoubleLinkedList<G>::getSize() //!< Function that returns how many items are in the list
 {
     return size;
 }
 
 template<class G>
-bool DoubleLinkedList<G>::empty()
+bool DoubleLinkedList<G>::empty() //!< Function that checks if list is empty
 {
     return size == 0;
 }
