@@ -57,18 +57,15 @@ DoubleLinkedList<G>::~DoubleLinkedList()
 template<class G>
 void DoubleLinkedList<G>::pushFront(G newElement)
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmp = shared_ptr<DoubleLinkedListNode<G>>(new DoubleLinkedListNode<G>(newElement, front, nullptr));
+    shared_ptr<DoubleLinkedListNode<G>> tmpFront(new DoubleLinkedListNode<G>(newElement, front, nullptr));
     if (empty()) {
-        front = tmp;
-        back = tmp;
-        current = tmp;
+        front = tmpFront;
+        back = tmpFront;
+        current = tmpFront;
     }
-    else {
-       // front->setNext(tmp);
-        if (front != nullptr) {
-            front->setNext(tmp);
-        }//!< Set the previous fronts node's next node to new front node
-        front = tmp;
+    else {        
+       front->setNext(tmpFront); //!< Set the previous fronts node's next node to new front node
+       front = tmpFront;
 
     }
 
@@ -77,17 +74,15 @@ void DoubleLinkedList<G>::pushFront(G newElement)
 template<class G>
 void DoubleLinkedList<G>::pushBack(G newElement)
 {   
-    shared_ptr<DoubleLinkedListNode<G>> tmp = shared_ptr<DoubleLinkedListNode<G>>(new DoubleLinkedListNode<G>(newElement, nullptr, back));
+    shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, nullptr, back));
     if (empty()) {
-        front = tmp;
-        back = tmp;
-        current = tmp;
+        front = tmpBack;
+        back = tmpBack;
+        current = tmpBack;
     }
     else {
-        if (back != nullptr) {
-            back->setPrev(tmp);
-        }//!< Set the previous back node's previous node to new back node
-        back = tmp;
+        back->setPrev(tmpBack); //!< Set the previous back's node's previous node to new back node
+        back = tmpBack;
     }
 
     size++;
@@ -179,10 +174,19 @@ G DoubleLinkedList<G>::popBack() //!< Removes back node
     }
     else {
         result = back->getData(); //!< Get result from back node
-        back = back->getNext(); //!< Set back node next node as new back node
+
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = back->getNext(); //!< Make a pointer to back's node's next node
+        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = back->getPrev(); //!< Make a pointer to back's node's previous node
+
+        if (current == back) { //!< If current is the same as back move current to next node
+            current = tmpNext;
+        }
+
+        tmpNext->setPrev(tmpPrev); //< Make back's node's next node point to back's node's previous node
+        back = tmpNext; //!< Set back's node's next node as new back node
+        
         size--; //!< Decrement list size
     }
-
     return result;
 }
 
@@ -204,7 +208,17 @@ G DoubleLinkedList<G>::popFront() //!< Removes front node
     }
     else {
         result = front->getData(); //!< Get result from front node
-        front = front->getPrev(); //!< Set fronts node previous node as new front node
+
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = front->getNext(); //!< Make a pointer to fronts's node's next node
+        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = front->getPrev(); //!< Make a pointer to fronts's node's previous node
+
+        if (current == front) { //!< If current is the same as front move current to next node
+            current = tmpPrev;
+        }
+
+        tmpPrev->setNext(tmpNext); //!< Make front's node's previous node point to front's node's next node
+        front = tmpPrev; //!< Set front's node's previous node as new front node
+
         size--; //!< Decrement list size
     }
     return result;
