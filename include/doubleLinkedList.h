@@ -57,7 +57,7 @@ DoubleLinkedList<G>::~DoubleLinkedList()
 template<class G>
 void DoubleLinkedList<G>::pushFront(G newElement)
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, nullptr));
+    shared_ptr<DoubleLinkedListNode<G>> tmp = shared_ptr<DoubleLinkedListNode<G>>(new DoubleLinkedListNode<G>(newElement, front, nullptr));
     if (empty()) {
         front = tmp;
         back = tmp;
@@ -65,7 +65,9 @@ void DoubleLinkedList<G>::pushFront(G newElement)
     }
     else {
        // front->setNext(tmp);
-        front->setNext(tmp); //!< Set the previous fronts node's next node to new front node
+        if (front != nullptr) {
+            front->setNext(tmp);
+        }//!< Set the previous fronts node's next node to new front node
         front = tmp;
 
     }
@@ -75,89 +77,98 @@ void DoubleLinkedList<G>::pushFront(G newElement)
 template<class G>
 void DoubleLinkedList<G>::pushBack(G newElement)
 {   
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, nullptr, back));
+    shared_ptr<DoubleLinkedListNode<G>> tmp = shared_ptr<DoubleLinkedListNode<G>>(new DoubleLinkedListNode<G>(newElement, nullptr, back));
     if (empty()) {
         front = tmp;
         back = tmp;
         current = tmp;
     }
     else {
-        back->setPrev(tmp); //!< Set the previous back node's previous node to new back node
+        if (back != nullptr) {
+            back->setPrev(tmp);
+        }//!< Set the previous back node's previous node to new back node
         back = tmp;
     }
 
     size++;
 }
 template<class G>
-void DoubleLinkedList<G>::pushAfterCurrent(G newElement)
+void DoubleLinkedList<G>::pushAfterCurrent(G newElement) // FIX FUNCTION
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, back));
     if (empty()) { //!< Sanity check
         cout << "Cannot add after nothing." << endl;
     }
     else {
+        //shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current; // new Previous
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); // Next
 
+        shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, current, tmpNext));
+
+        current->setNext(tmp); //!< Set the previous current node's next node to new current node
+        tmp->getNext()->setPrev(tmp); //!< Set the previous next node's
+        current = tmp;
+        size++;
     }
 }
 template<class G>
 void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
 {
+    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, back));
 }
 
 template<class G>
-G DoubleLinkedList<G>::popCurrent()
+G DoubleLinkedList<G>::popCurrent() //!< Removes current node
 {
     G result;
-    if (size == 0) {
+    if (empty()) { //!< If list empty print generic message
         result = "Sorry there is nothing to remove";
     }
-    else if (size == 1) {
-        result = current->getData();
+    else if (size == 1) { //!< If only one element is in the list assign everything to nullptr
+        result = current->getData(); //!< Get current's node's data
 
         front = nullptr;
         back = nullptr;
         current = nullptr;
 
-        size--;
+        size--; //!< Decrement lists size
     }
     else {
-        result = current->getData();
+        result = current->getData(); //!< Get current's node's data
 
         
-        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev();
-        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext();
+        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev(); //!< Make a pointer to current's node's previous node
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); //!< Make a pointer to current's node's next node
 
-        if (tmpPrev != nullptr) {
-            tmpPrev->setNext(current->getNext());
+        if ((tmpPrev != nullptr) && (tmpNext != nullptr)) { //!< Check if node that will be pop'd is in the middle
+            tmpPrev->setNext(tmpNext); //< Make current's node's previous node point to current's node's next node
+            current = tmpPrev;
         }
-        else {
-            back = tmpNext;
+        else if (tmpPrev != nullptr) { //!< Check if the node that will be pop'd is at the front
+            tmpPrev->setNext(tmpNext); //!< Make current's node's previous node point to current's node's next node
+            current = tmpPrev; //!< Set it as new current
+            front = tmpPrev; //!< Set it as new front
         }
-
-        if (tmpNext != nullptr) {
-            tmpNext->setPrev(current->getPrev());
+        else { //!< Check if the node that will be pop'd is at the back
+            tmpNext->setPrev(tmpPrev); //< Make current's node's next node point to current's node's previous node
+            current = tmpNext; //!< Set it as new current
+            back = tmpNext; //!< Set it as new back
+            
         }
-        else {
-            front = tmpNext;
-        }
-        
-        
-
-        size--;
+        size--; //!< Decrement lists size
     }
 
 
-    return result;
+    return result; //!< Return result data
 }
 
 template<class G>
-G DoubleLinkedList<G>::popBack()
+G DoubleLinkedList<G>::popBack() //!< Removes back node
 {
     G result;
-    if (size == 0) {
+    if (empty()) { //!< If list empty print generic message
         result = "Sorry there is nothing to remove";
     }
-    else if (size == 1) {
+    else if (size == 1) { //!< If only one element is in the list assign everything to nullptr
         result = back->getData();  //!< Get result from back node
 
         front = nullptr;
@@ -176,13 +187,13 @@ G DoubleLinkedList<G>::popBack()
 }
 
 template<class G>
-G DoubleLinkedList<G>::popFront()
+G DoubleLinkedList<G>::popFront() //!< Removes front node
 {
     G result;
-    if (size == 0) {
+    if (empty()) { //!< If list empty print generic message
         result = "Sorry there is nothing to remove";
     }
-    else if(size == 1){
+    else if(size == 1){ //!< If only one element is in the list assign everything to nullptr
         result = front->getData(); //!< Get result from front node
 
         front = nullptr;

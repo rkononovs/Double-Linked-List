@@ -30,21 +30,44 @@ void main() /** Entry point for the application */
 	
 	myList.traverseForward();
 	myList.traverseForward();
+	//myList.pushAfterCurrent("Hope");
 	myList.traverseForward();
-
+	
+	
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
-	cout << myList.getCurrent() << endl;
+	//cout << myList.getCurrent() << endl;
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
-
-	cout << myList.getBack() << endl;
-	cout << myList.getFront() << endl;
+	
+	
+	//cout << myList.getBack() << endl;
+	/*
+	cout << "This is front" << myList.getFront() << endl;
+	cout << "This is front" << myList.getCurrent() << endl;
+	cout << "This is fron" << myList.getBack() << endl;
 
 	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+	//cout << myList.getFront() << endl;
+	cout << myList.popCurrent() << endl;
+	cout << myList.popCurrent() << endl;
+
+	*/
+	while (!myList.empty()) {
+		cout << "This is front: " << myList.getFront() << endl;
+		cout << "This is current: " << myList.getCurrent() << endl;
+		cout << "This is back: " << myList.getBack() << endl;
+
+		cout << myList.popCurrent() << endl;
+	}
 
 
 	std::cout << myList.getSize() << std::endl;
