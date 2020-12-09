@@ -34,15 +34,18 @@ void main() /** Entry point for the application */
 	myList.traverseForward();
 	myList.pushAfterCurrent("me");
 	
-	
+	myList.traverseForward();
+	myList.pushBeforeCurrent("for");
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.pushAfterCurrent("that");
+	myList.pushBeforeCurrent("will.");
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
+	myList.pushBeforeCurrent("bob");
 	myList.pushAfterCurrent("will");
 	
 	

@@ -101,20 +101,15 @@ void DoubleLinkedList<G>::pushAfterCurrent(G newElement) // FIX FUNCTION
         shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev(); //!< Make a pointer to current's node's previous node
         shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); //!< Make a pointer to current's node's next node
 
-        if ((tmpPrev != nullptr) && (tmpNext != nullptr)) { //!< Check if node that will be pushed is in the middle
+        if (tmpNext != nullptr) { //!< Check if node that will be pushed is in the middle or near the back
             shared_ptr<DoubleLinkedListNode<G>> tmpMid(new DoubleLinkedListNode<G>(newElement, current, tmpNext)); //!< Initialize new node in the middle
-            tmpNext->setPrev(tmpMid);
-            current->setNext(tmpMid); // Questionable line
+            tmpNext->setPrev(tmpMid); //!< Set previous next nodes previous to new node
+            current->setNext(tmpMid); //!< Set currents next node to new node
         }
-        else if (tmpPrev != nullptr) { //!< Check if the node that will be pushed is at the front
+        else { //!< Check if the node that will be pushed is at the front
             shared_ptr<DoubleLinkedListNode<G>> tmpFront(new DoubleLinkedListNode<G>(newElement, current, nullptr)); //!< Initialize new node at the front
             front->setNext(tmpFront); //!< Set the previous fronts node's next node to new front node
             front = tmpFront; //!< Set new node as new front
-        }
-        else { //!< Check if the node that will be pop'd is at the back
-            shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, current, tmpNext)); //!< Initialize new node at the back
-            tmpNext->setPrev(tmpBack);
-            current->setNext(tmpBack);
         }
 
         size++; //!< Increment size of the list
@@ -123,7 +118,21 @@ void DoubleLinkedList<G>::pushAfterCurrent(G newElement) // FIX FUNCTION
 template<class G>
 void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
 {
-    shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, front, back));
+    shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev(); //!< Make a pointer to current's node's previous node
+    shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); //!< Make a pointer to current's node's next node
+
+    if (tmpPrev != nullptr) { //!< Check if node that will be pushed is in the middle or near the front
+        shared_ptr<DoubleLinkedListNode<G>> tmpMid(new DoubleLinkedListNode<G>(newElement, tmpPrev, current)); //!< Initialize new node in the middle
+        tmpPrev->setNext(tmpMid); //!< Set previous previous nodes next to new node
+        current->setPrev(tmpMid); //!< Set currents previous node to new node
+    }
+    else { //!< Check if the node that will be pushed is at the front
+        shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, nullptr, current)); //!< Initialize new node at the front
+        back->setPrev(tmpBack); //!< Set the previous back's node's previous node to new back node
+        back = tmpBack; //!< Set new node as new back
+    }
+
+    size++; //!< Increment size of the list
 }
 
 template<class G>
