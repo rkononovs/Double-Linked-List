@@ -71,7 +71,6 @@ void DoubleLinkedList<G>::pushFront(G newElement) //!< Adds a node to the front/
     else {
        front->setNext(tmpFront); //!< Set the previous fronts node's next node to new front node
        front = tmpFront; //!< Set new node as new front
-
     }
 
     size++; //!< Increment size of the list
@@ -99,15 +98,26 @@ void DoubleLinkedList<G>::pushAfterCurrent(G newElement) // FIX FUNCTION
         cout << "Cannot add after nothing." << endl;
     }
     else {
-        //shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current; // new Previous
-        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); // Next
+        shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev(); //!< Make a pointer to current's node's previous node
+        shared_ptr<DoubleLinkedListNode<G>> tmpNext = current->getNext(); //!< Make a pointer to current's node's next node
 
-        shared_ptr<DoubleLinkedListNode<G>> tmp(new DoubleLinkedListNode<G>(newElement, current, tmpNext));
+        if ((tmpPrev != nullptr) && (tmpNext != nullptr)) { //!< Check if node that will be pushed is in the middle
+            shared_ptr<DoubleLinkedListNode<G>> tmpMid(new DoubleLinkedListNode<G>(newElement, current, tmpNext)); //!< Initialize new node in the middle
+            tmpNext->setPrev(tmpMid);
+            current->setNext(tmpMid); // Questionable line
+        }
+        else if (tmpPrev != nullptr) { //!< Check if the node that will be pushed is at the front
+            shared_ptr<DoubleLinkedListNode<G>> tmpFront(new DoubleLinkedListNode<G>(newElement, current, nullptr)); //!< Initialize new node at the front
+            front->setNext(tmpFront); //!< Set the previous fronts node's next node to new front node
+            front = tmpFront; //!< Set new node as new front
+        }
+        else { //!< Check if the node that will be pop'd is at the back
+            shared_ptr<DoubleLinkedListNode<G>> tmpBack(new DoubleLinkedListNode<G>(newElement, current, tmpNext)); //!< Initialize new node at the back
+            tmpNext->setPrev(tmpBack);
+            current->setNext(tmpBack);
+        }
 
-        current->setNext(tmp); //!< Set the previous current node's next node to new current node
-        tmp->getNext()->setPrev(tmp); //!< Set the previous next node's
-        current = tmp;
-        size++;
+        size++; //!< Increment size of the list
     }
 }
 template<class G>

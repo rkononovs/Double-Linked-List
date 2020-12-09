@@ -32,17 +32,19 @@ void main() /** Entry point for the application */
 	myList.traverseForward();
 	//myList.pushAfterCurrent("Hope");
 	myList.traverseForward();
+	myList.pushAfterCurrent("me");
 	
-	/*
+	
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.traverseBackward();
+	myList.pushAfterCurrent("that");
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
 	myList.traverseBackward();
-	//cout << myList.getCurrent() << endl;
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.traverseBackward();
-	*/
+	myList.pushAfterCurrent("will");
+	
 	
 	//cout << myList.getBack() << endl;
 	/*
@@ -67,7 +69,6 @@ void main() /** Entry point for the application */
 		cout << "This is back: " << myList.getBack() << endl;
 
 		cout << myList.popFront() << endl;
-		cout << myList.popBack() << endl;
 	}
 
 
