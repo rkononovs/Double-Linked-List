@@ -61,14 +61,6 @@ DoubleLinkedList<G>::DoubleLinkedList()
 template<class G>
 DoubleLinkedList<G>::~DoubleLinkedList()
 {
-    current = front;
-    while (current != nullptr) //!< Loops through setting the list to empty by nulling all items.
-    {
-        current->setNext(nullptr);
-        current = current->getPrev();
-    }
-    front = nullptr;
-    back = nullptr;
 }
 template<class G>
 void DoubleLinkedList<G>::pushFront(G newElement) //!< Adds a node to the front/head of the list
