@@ -1,0 +1,412 @@
+\hypertarget{class_double_linked_list}{}\doxysection{Double\+Linked\+List$<$ G $>$ Class Template Reference}
+\label{class_double_linked_list}\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_double_linked_list_a899beba1d4beaca0db784243bbe2ca4e}{Double\+Linked\+List}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_double_linked_list_a71bd8f08e196b0cada2ca14e4bf26525}{$\sim$\+Double\+Linked\+List}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_a046cd03d64e04077a45024d900dbf8a1}{push\+Front}} (G new\+Element)
+\begin{DoxyCompactList}\small\item\em Node pushing methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_a1b807f74ab0d17de14a5a4369b366379}{push\+Back}} (G new\+Element)
+\item 
+void \mbox{\hyperlink{class_double_linked_list_a3cdef14bd7fa808486fc1fc42405996f}{push\+After\+Current}} (G new\+Element)
+\item 
+void \mbox{\hyperlink{class_double_linked_list_afb3c35db6e9ce55d3369aaceb05407ab}{push\+Before\+Current}} (G new\+Element)
+\item 
+void \mbox{\hyperlink{class_double_linked_list_a00aee5d30ca55a99bdc92f94eddd2e82}{pop\+Current}} ()
+\begin{DoxyCompactList}\small\item\em Node popping methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_ab3ebe6fa8a52430897d8d94b99e5bd69}{pop\+Back}} ()
+\item 
+void \mbox{\hyperlink{class_double_linked_list_a8da81e19a07e7102ad745841663e5d7d}{pop\+Front}} ()
+\item 
+void \mbox{\hyperlink{class_double_linked_list_ae32c70c566103cfebbb4116a5b34f7b7}{traverse\+Forward}} ()
+\begin{DoxyCompactList}\small\item\em Node traversal methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_ac245932c808ea2012fb8cd4f17fdd462}{traverse\+Backward}} ()
+\item 
+void \mbox{\hyperlink{class_double_linked_list_af6afb7c615e33167f65312f4c483fe4f}{get\+Front}} ()
+\begin{DoxyCompactList}\small\item\em Node getters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_a932352d12861d4f4706ed1c38aee3c94}{get\+Current}} ()
+\item 
+void \mbox{\hyperlink{class_double_linked_list_a9a89f2bdecd95929b9428590355f50ee}{get\+Back}} ()
+\item 
+void \mbox{\hyperlink{class_double_linked_list_a2627527541bec4258f0dac85ca151c87}{sort\+List}} ()
+\begin{DoxyCompactList}\small\item\em Sort the list using bubble sort. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_a9a4676c2a2ffd9d8fec62449b8cf714d}{swap\+Data}} (G \&data1, G \&data2)
+\begin{DoxyCompactList}\small\item\em Swaps data between two nodes -\/ same as std\+::swap except with G template and not T. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_double_linked_list_a96abd1f9a1602fd0cf31ba9c951dca65}{print\+List}} ()
+\begin{DoxyCompactList}\small\item\em Print whole list without popping anything (useful to see sorting) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_double_linked_list_af0cf46a8e3a9ce31a68ffb27be8a88bf}\label{class_double_linked_list_af0cf46a8e3a9ce31a68ffb27be8a88bf}} 
+unsigned int \mbox{\hyperlink{class_double_linked_list_af0cf46a8e3a9ce31a68ffb27be8a88bf}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Size getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_double_linked_list_ad7459f36a02d10cc652533f4c0302c35}\label{class_double_linked_list_ad7459f36a02d10cc652533f4c0302c35}} 
+bool {\bfseries empty} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_double_linked_list_a899beba1d4beaca0db784243bbe2ca4e}\label{class_double_linked_list_a899beba1d4beaca0db784243bbe2ca4e}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!DoubleLinkedList@{DoubleLinkedList}}
+\index{DoubleLinkedList@{DoubleLinkedList}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{DoubleLinkedList()}{DoubleLinkedList()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+\mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::\mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}}
+
+
+
+Default constructor. 
+
+Initialize everything as null\mbox{\Hypertarget{class_double_linked_list_a71bd8f08e196b0cada2ca14e4bf26525}\label{class_double_linked_list_a71bd8f08e196b0cada2ca14e4bf26525}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!````~DoubleLinkedList@{$\sim$DoubleLinkedList}}
+\index{````~DoubleLinkedList@{$\sim$DoubleLinkedList}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$DoubleLinkedList()}{~DoubleLinkedList()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+\mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::$\sim$\mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}}
+
+
+
+Default destructor. 
+
+$<$ Loops through setting the list to empty by nulling all items.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_double_linked_list_a9a89f2bdecd95929b9428590355f50ee}\label{class_double_linked_list_a9a89f2bdecd95929b9428590355f50ee}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!getBack@{getBack}}
+\index{getBack@{getBack}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{getBack()}{getBack()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::get\+Back}
+
+$<$ If list empty print generic message\mbox{\Hypertarget{class_double_linked_list_a932352d12861d4f4706ed1c38aee3c94}\label{class_double_linked_list_a932352d12861d4f4706ed1c38aee3c94}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!getCurrent@{getCurrent}}
+\index{getCurrent@{getCurrent}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{getCurrent()}{getCurrent()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::get\+Current}
+
+$<$ If list empty print generic message\mbox{\Hypertarget{class_double_linked_list_af6afb7c615e33167f65312f4c483fe4f}\label{class_double_linked_list_af6afb7c615e33167f65312f4c483fe4f}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!getFront@{getFront}}
+\index{getFront@{getFront}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{getFront()}{getFront()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::get\+Front}
+
+
+
+Node getters. 
+
+$<$ If list empty print generic message\mbox{\Hypertarget{class_double_linked_list_ab3ebe6fa8a52430897d8d94b99e5bd69}\label{class_double_linked_list_ab3ebe6fa8a52430897d8d94b99e5bd69}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!popBack@{popBack}}
+\index{popBack@{popBack}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{popBack()}{popBack()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::pop\+Back}
+
+$<$ If list empty print generic message
+
+$<$ If only one element is in the list assign everything to nullptr
+
+$<$ Get result from back node
+
+$<$ Decrement list size
+
+$<$ Get result from back node
+
+$<$ Make a pointer to back\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Make a pointer to back\textquotesingle{}s node\textquotesingle{}s previous node
+
+$<$ If current is the same as back move current to next node
+
+$<$ Set back\textquotesingle{}s node\textquotesingle{}s next node as new back node
+
+$<$ Decrement list size\mbox{\Hypertarget{class_double_linked_list_a00aee5d30ca55a99bdc92f94eddd2e82}\label{class_double_linked_list_a00aee5d30ca55a99bdc92f94eddd2e82}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!popCurrent@{popCurrent}}
+\index{popCurrent@{popCurrent}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{popCurrent()}{popCurrent()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::pop\+Current}
+
+
+
+Node popping methods. 
+
+$<$ If list empty print generic message
+
+$<$ If only one element is in the list assign everything to nullptr
+
+$<$ Get current\textquotesingle{}s node\textquotesingle{}s data
+
+$<$ Decrement lists size
+
+$<$ Get current\textquotesingle{}s node\textquotesingle{}s data
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s previous node
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Check if node that will be pop\textquotesingle{}d is in the middle
+
+$<$ Check if the node that will be pop\textquotesingle{}d is at the front
+
+$<$ Make current\textquotesingle{}s node\textquotesingle{}s previous node point to current\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Set it as new current
+
+$<$ Set it as new front
+
+$<$ Check if the node that will be pop\textquotesingle{}d is at the back
+
+$<$ Set it as new current
+
+$<$ Set it as new back
+
+$<$ Decrement lists size\mbox{\Hypertarget{class_double_linked_list_a8da81e19a07e7102ad745841663e5d7d}\label{class_double_linked_list_a8da81e19a07e7102ad745841663e5d7d}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!popFront@{popFront}}
+\index{popFront@{popFront}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{popFront()}{popFront()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::pop\+Front}
+
+$<$ If list empty print generic message
+
+$<$ If only one element is in the list assign everything to nullptr
+
+$<$ Get result from front node
+
+$<$ Decrement list size
+
+$<$ Get result from front node
+
+$<$ Make a pointer to fronts\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Make a pointer to fronts\textquotesingle{}s node\textquotesingle{}s previous node
+
+$<$ If current is the same as front move current to next node
+
+$<$ Make front\textquotesingle{}s node\textquotesingle{}s previous node point to front\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Set front\textquotesingle{}s node\textquotesingle{}s previous node as new front node
+
+$<$ Decrement list size\mbox{\Hypertarget{class_double_linked_list_a96abd1f9a1602fd0cf31ba9c951dca65}\label{class_double_linked_list_a96abd1f9a1602fd0cf31ba9c951dca65}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!printList@{printList}}
+\index{printList@{printList}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{printList()}{printList()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::print\+List}
+
+
+
+Print whole list without popping anything (useful to see sorting) 
+
+$<$ Make a tmp pointer to the back element of the list
+
+$<$ Make a tmp size
+
+$<$ If list empty print generic message
+
+$<$ Itterate through the whole list
+
+$<$ Print the tmp back element
+
+$<$ Decrement tmp size
+
+$<$ Move back pointer to next in the list\mbox{\Hypertarget{class_double_linked_list_a3cdef14bd7fa808486fc1fc42405996f}\label{class_double_linked_list_a3cdef14bd7fa808486fc1fc42405996f}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!pushAfterCurrent@{pushAfterCurrent}}
+\index{pushAfterCurrent@{pushAfterCurrent}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{pushAfterCurrent()}{pushAfterCurrent()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::push\+After\+Current (\begin{DoxyParamCaption}\item[{G}]{new\+Element }\end{DoxyParamCaption})}
+
+$<$ Sanity check
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s previous node
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Check if node that will be pushed is in the middle or near the back
+
+$<$ Initialize new node in the middle
+
+$<$ Set previous next nodes previous to new node
+
+$<$ Set currents next node to new node
+
+$<$ Check if the node that will be pushed is at the front
+
+$<$ Initialize new node at the front
+
+$<$ Set the previous fronts node\textquotesingle{}s next node to new front node
+
+$<$ Set new node as new front
+
+$<$ Increment size of the list\mbox{\Hypertarget{class_double_linked_list_a1b807f74ab0d17de14a5a4369b366379}\label{class_double_linked_list_a1b807f74ab0d17de14a5a4369b366379}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!pushBack@{pushBack}}
+\index{pushBack@{pushBack}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{pushBack()}{pushBack()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::push\+Back (\begin{DoxyParamCaption}\item[{G}]{new\+Element }\end{DoxyParamCaption})}
+
+$<$ Initialize new node
+
+$<$ If list is empty set everything as new node
+
+$<$ Set the previous back\textquotesingle{}s node\textquotesingle{}s previous node to new back node
+
+$<$ Set new node as new back
+
+$<$ Increment size of the list
+\begin{DoxyParams}{Parameters}
+{\em new\+Element} & Adds a node to the back/tail of the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_double_linked_list_afb3c35db6e9ce55d3369aaceb05407ab}\label{class_double_linked_list_afb3c35db6e9ce55d3369aaceb05407ab}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!pushBeforeCurrent@{pushBeforeCurrent}}
+\index{pushBeforeCurrent@{pushBeforeCurrent}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{pushBeforeCurrent()}{pushBeforeCurrent()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::push\+Before\+Current (\begin{DoxyParamCaption}\item[{G}]{new\+Element }\end{DoxyParamCaption})}
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s previous node
+
+$<$ Make a pointer to current\textquotesingle{}s node\textquotesingle{}s next node
+
+$<$ Check if node that will be pushed is in the middle or near the front
+
+$<$ Initialize new node in the middle
+
+$<$ Set previous previous nodes next to new node
+
+$<$ Set currents previous node to new node
+
+$<$ Check if the node that will be pushed is at the front
+
+$<$ Initialize new node at the front
+
+$<$ Set the previous back\textquotesingle{}s node\textquotesingle{}s previous node to new back node
+
+$<$ Set new node as new back
+
+$<$ Increment size of the list\mbox{\Hypertarget{class_double_linked_list_a046cd03d64e04077a45024d900dbf8a1}\label{class_double_linked_list_a046cd03d64e04077a45024d900dbf8a1}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!pushFront@{pushFront}}
+\index{pushFront@{pushFront}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{pushFront()}{pushFront()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::push\+Front (\begin{DoxyParamCaption}\item[{G}]{new\+Element }\end{DoxyParamCaption})}
+
+
+
+Node pushing methods. 
+
+$<$ Initialize new node
+
+$<$ If list is empty set everything as new node
+
+$<$ Set the previous fronts node\textquotesingle{}s next node to new front node
+
+$<$ Set new node as new front
+
+$<$ Increment size of the list
+\begin{DoxyParams}{Parameters}
+{\em new\+Element} & Adds a node to the front/head of the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_double_linked_list_a2627527541bec4258f0dac85ca151c87}\label{class_double_linked_list_a2627527541bec4258f0dac85ca151c87}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!sortList@{sortList}}
+\index{sortList@{sortList}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{sortList()}{sortList()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::sort\+List}
+
+
+
+Sort the list using bubble sort. 
+
+$<$ Checks if list is swapped
+
+$<$ Temp pointer for null
+
+$<$ Start of the sort
+
+$<$ Next pointer to swap
+
+$<$ Largest pointer
+
+$<$ If list empty print generic message
+
+$<$ Swap till all list is sorted
+
+$<$ assign next pointer as start
+
+$<$ swapped as false for default
+
+$<$ Check if next pointer is larger then largest
+
+$<$ If next pointer is not null
+
+$<$ Assign a currents pointers data value
+
+$<$ Assign next pointers data value
+
+$<$ Compare them
+
+$<$ Swap them
+
+$<$ Make swapped as true and don\textquotesingle{}t breake while loop
+
+$<$ Set pointers data value as swapped value
+
+$<$ Set next pointers data value as swapped value
+
+$<$ Change pointer to next pointer
+
+$<$ Change it as largest pointer
+
+$<$ drop the loop when everything is swapped/sorted\mbox{\Hypertarget{class_double_linked_list_a9a4676c2a2ffd9d8fec62449b8cf714d}\label{class_double_linked_list_a9a4676c2a2ffd9d8fec62449b8cf714d}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!swapData@{swapData}}
+\index{swapData@{swapData}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{swapData()}{swapData()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::swap\+Data (\begin{DoxyParamCaption}\item[{G \&}]{data1,  }\item[{G \&}]{t2 }\end{DoxyParamCaption})}
+
+
+
+Swaps data between two nodes -\/ same as std\+::swap except with G template and not T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t2} & Standart std\+::swap implementation with G template and not T template \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_double_linked_list_ac245932c808ea2012fb8cd4f17fdd462}\label{class_double_linked_list_ac245932c808ea2012fb8cd4f17fdd462}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!traverseBackward@{traverseBackward}}
+\index{traverseBackward@{traverseBackward}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{traverseBackward()}{traverseBackward()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::traverse\+Backward}
+
+$<$ If list empty print generic message
+
+$<$ Changes current node if it\textquotesingle{}s not at the back
+
+$<$ If cannot travel further print generic message\mbox{\Hypertarget{class_double_linked_list_ae32c70c566103cfebbb4116a5b34f7b7}\label{class_double_linked_list_ae32c70c566103cfebbb4116a5b34f7b7}} 
+\index{DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}!traverseForward@{traverseForward}}
+\index{traverseForward@{traverseForward}!DoubleLinkedList$<$ G $>$@{DoubleLinkedList$<$ G $>$}}
+\doxysubsubsection{\texorpdfstring{traverseForward()}{traverseForward()}}
+{\footnotesize\ttfamily template$<$class G $>$ \\
+void \mbox{\hyperlink{class_double_linked_list}{Double\+Linked\+List}}$<$ G $>$\+::traverse\+Forward}
+
+
+
+Node traversal methods. 
+
+$<$ If list empty print generic message
+
+$<$ Changes current node if it\textquotesingle{}s not at the front
+
+$<$ If cannot travel further print generic message
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/roma0/\+Desktop/\+I\+M\+A\+T2905/\+I\+M\+A\+T2905/lab-\/book-\/2-\/assessed-\/rkononovs/include/double\+Linked\+List.\+h\end{DoxyCompactItemize}
