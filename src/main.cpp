@@ -18,62 +18,26 @@
 
 void main() /** Entry point for the application */
 {
-	DoubleLinkedList<std::string> myList;
-	
-	myList.pushBack("I");
-	myList.pushFront("am");
-	myList.pushFront("testing");
-	myList.pushBack("the");
-	myList.pushBack("code");
-	myList.pushBack("Thank");
-	myList.pushBack("you!");
-	
-	myList.traverseForward();
-	myList.traverseForward();
-	//myList.pushAfterCurrent("Hope");
-	myList.traverseForward();
-	myList.pushAfterCurrent("me");
-	
-	myList.traverseForward();
-	myList.pushBeforeCurrent("for");
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.pushAfterCurrent("that");
-	myList.pushBeforeCurrent("will.");
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.traverseBackward();
-	myList.pushBeforeCurrent("bob");
-	myList.pushAfterCurrent("will");
-	
-	
-	//cout << myList.getBack() << endl;
-	/*
-	cout << "This is front" << myList.getFront() << endl;
-	cout << "This is front" << myList.getCurrent() << endl;
-	cout << "This is fron" << myList.getBack() << endl;
+	DoubleLinkedList<int> myList;
 
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
-	//cout << myList.getFront() << endl;
-	cout << myList.popCurrent() << endl;
-	cout << myList.popCurrent() << endl;
+	myList.pushBack(1);
+	myList.pushFront(10);
+	myList.pushFront(3);
 
-	*/
+	myList.printList();
+	
 	while (!myList.empty()) {
-		cout << "This is front: " << myList.getFront() << endl;
-		cout << "This is current: " << myList.getCurrent() << endl;
-		cout << "This is back: " << myList.getBack() << endl;
+		cout << "This is front: ";
+		myList.getFront();
+		cout << "This is current: ";
+		myList.getCurrent();
+		cout << "This is back: ";
+		myList.getBack();
 
-		cout << myList.popFront() << endl;
+		myList.popFront();
 	}
 
+	myList.popFront();
 
 	std::cout << myList.getSize() << std::endl;
 

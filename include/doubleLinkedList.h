@@ -29,19 +29,21 @@ public:
     void pushBeforeCurrent(G newElement);
 
     //! Node popping methods
-    G popCurrent();
-    G popBack();
-    G popFront();
+    void popCurrent();
+    void popBack();
+    void popFront();
 
     //! Node traversal methods
     void traverseForward();
     void traverseBackward();
     
     //! Node getters
-    G getFront();
-    G getCurrent();
-    G getBack();
+    void getFront();
+    void getCurrent();
+    void getBack();
 
+    void sortList(); //!< Sort the list
+    void printList(); //!< Print whole list without popping anything (useful to see sorting)
     unsigned int getSize(); //!< Size getter
     bool empty();
 };
@@ -136,14 +138,13 @@ void DoubleLinkedList<G>::pushBeforeCurrent(G newElement)
 }
 
 template<class G>
-G DoubleLinkedList<G>::popCurrent() //!< Removes current node
+void DoubleLinkedList<G>::popCurrent() //!< Removes current node
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "Sorry there is nothing to remove";
+        cout << "Sorry there is nothing to remove";
     }
     else if (size == 1) { //!< If only one element is in the list assign everything to nullptr
-        result = current->getData(); //!< Get current's node's data
+        cout << current->getData(); //!< Get current's node's data
 
         front = nullptr;
         back = nullptr;
@@ -152,7 +153,7 @@ G DoubleLinkedList<G>::popCurrent() //!< Removes current node
         size--; //!< Decrement lists size
     }
     else {
-        result = current->getData(); //!< Get current's node's data
+        cout << current->getData(); //!< Get current's node's data
 
         
         shared_ptr<DoubleLinkedListNode<G>> tmpPrev = current->getPrev(); //!< Make a pointer to current's node's previous node
@@ -176,19 +177,17 @@ G DoubleLinkedList<G>::popCurrent() //!< Removes current node
         size--; //!< Decrement lists size
     }
 
-
-    return result; //!< Return result data
+    cout << endl;
 }
 
 template<class G>
-G DoubleLinkedList<G>::popBack() //!< Removes back node
+void DoubleLinkedList<G>::popBack() //!< Removes back node
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "Sorry there is nothing to remove";
+        cout << "Sorry there is nothing to remove";
     }
     else if (size == 1) { //!< If only one element is in the list assign everything to nullptr
-        result = back->getData();  //!< Get result from back node
+        cout << back->getData();  //!< Get result from back node
 
         front = nullptr;
         back = nullptr;
@@ -197,7 +196,7 @@ G DoubleLinkedList<G>::popBack() //!< Removes back node
         size--; //!< Decrement list size
     }
     else {
-        result = back->getData(); //!< Get result from back node
+        cout << back->getData(); //!< Get result from back node
 
         shared_ptr<DoubleLinkedListNode<G>> tmpNext = back->getNext(); //!< Make a pointer to back's node's next node
         shared_ptr<DoubleLinkedListNode<G>> tmpPrev = back->getPrev(); //!< Make a pointer to back's node's previous node
@@ -211,18 +210,18 @@ G DoubleLinkedList<G>::popBack() //!< Removes back node
         
         size--; //!< Decrement list size
     }
-    return result;
+    
+    cout << endl;
 }
 
 template<class G>
-G DoubleLinkedList<G>::popFront() //!< Removes front node
+void DoubleLinkedList<G>::popFront() //!< Removes front node
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "Sorry there is nothing to remove";
+        cout << "Sorry there is nothing to remove.";
     }
     else if(size == 1){ //!< If only one element is in the list assign everything to nullptr
-        result = front->getData(); //!< Get result from front node
+        cout << front->getData(); //!< Get result from front node
 
         front = nullptr;
         back = nullptr;
@@ -231,7 +230,7 @@ G DoubleLinkedList<G>::popFront() //!< Removes front node
         size--; //!< Decrement list size
     }
     else {
-        result = front->getData(); //!< Get result from front node
+        cout << front->getData(); //!< Get result from front node
 
         shared_ptr<DoubleLinkedListNode<G>> tmpNext = front->getNext(); //!< Make a pointer to fronts's node's next node
         shared_ptr<DoubleLinkedListNode<G>> tmpPrev = front->getPrev(); //!< Make a pointer to fronts's node's previous node
@@ -245,7 +244,8 @@ G DoubleLinkedList<G>::popFront() //!< Removes front node
 
         size--; //!< Decrement list size
     }
-    return result;
+
+    cout << endl;
 }
 
 template<class G>
@@ -281,45 +281,66 @@ void DoubleLinkedList<G>::traverseBackward() //!< Function that moves to the pre
 }
 
 template<class G>
-G DoubleLinkedList<G>::getFront() //!< Function that returns front's/head's node's data
+void DoubleLinkedList<G>::getFront() //!< Function that returns front's/head's node's data
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "There is nothing.";
+        cout << "There is nothing.";
     }
     else {
-        result = front->getData();
+        cout << front->getData();
     }
-
-    return result;
+    cout << endl;
 }
 
 template<class G>
-G DoubleLinkedList<G>::getCurrent() //!< Function that returns current's node's data
+void DoubleLinkedList<G>::getCurrent() //!< Function that returns current's node's data
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "There is nothing.";
+        cout << "There is nothing.";
     }
     else {
-        result = current->getData();
+        cout << current->getData();
     }
+    cout << endl;
 
-    return result;
 }
 
 template<class G>
-G DoubleLinkedList<G>::getBack() //!< Function that returns back's/tail's node's data
+void DoubleLinkedList<G>::getBack() //!< Function that returns back's/tail's node's data
 {
-    G result;
     if (empty()) { //!< If list empty print generic message
-        result = "There is nothing.";
+        cout << "There is nothing.";
     }
     else {
-        result = back->getData();
+        cout << back->getData();
+    }
+    cout << endl;
+
+}
+
+template<class G>
+void DoubleLinkedList<G>::sortList()
+{
+}
+
+template<class G>
+void DoubleLinkedList<G>::printList() //!< Print whole list without popping anything (useful to see sorting)
+{
+    shared_ptr<DoubleLinkedListNode<G>> tmpBack = back; //!< Make a tmp pointer to the back element of the list
+    unsigned int tmpSize = size; //!< Make a tmp size
+    if (empty()) { //!< If list empty print generic message
+        cout << "List is empty.";
+    }
+    else {
+        cout << "This is the list: ";
+        while (tmpSize != 0) { //!< Itterate through the whole list
+            cout << tmpBack->getData() << " "; //!< Print the tmp back element
+            tmpSize--; //!< Decrement tmp size
+            tmpBack = tmpBack->getNext(); //!< Move back pointer to next in the list
+        }
     }
 
-    return result;
+    cout << endl;
 }
 
 template<class G>
