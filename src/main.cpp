@@ -53,7 +53,7 @@ void main() /** Entry point for the application */
 
 	myListInt.popFront();
 
-	/*
+	
 	myListString.pushBack("Hello");
 	myListString.pushFront("World");
 	myListString.pushFront("!");
@@ -77,7 +77,6 @@ void main() /** Entry point for the application */
 	myListString.printList();
 
 	myListString.traverseBackward();
-	myListString.pushAfterCurrent("or");
 	myListString.printList();
 
 	myListString.traverseForward();
@@ -89,7 +88,7 @@ void main() /** Entry point for the application */
 		myListString.popBack();
 		myListString.popFront();
 	}
-	*/
+	
 	_CrtDumpMemoryLeaks(); // Look in the output window for a report
 	system("pause");
 }
