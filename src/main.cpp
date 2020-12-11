@@ -21,6 +21,7 @@ void main() /** Entry point for the application */
 	DoubleLinkedList<int> myListInt;
 	DoubleLinkedList<std::string> myListString;
 
+
 	myListInt.pushBack(10);
 	myListInt.pushBack(100);
 	myListInt.pushBack(15125);
@@ -31,10 +32,12 @@ void main() /** Entry point for the application */
 	myListInt.pushFront(1);
 	myListInt.pushFront(3);
 
+	cout << "Befor sorting: " << endl;
 	myListInt.printList();
 	
 	myListInt.sortList();
 	
+	cout << "After sorting: " << endl;
 	myListInt.printList();
 
 	while (!myListInt.empty()) {
@@ -50,6 +53,7 @@ void main() /** Entry point for the application */
 
 	myListInt.popFront();
 
+	/*
 	myListString.pushBack("Hello");
 	myListString.pushFront("World");
 	myListString.pushFront("!");
@@ -85,7 +89,7 @@ void main() /** Entry point for the application */
 		myListString.popBack();
 		myListString.popFront();
 	}
-
+	*/
 	_CrtDumpMemoryLeaks(); // Look in the output window for a report
 	system("pause");
 }

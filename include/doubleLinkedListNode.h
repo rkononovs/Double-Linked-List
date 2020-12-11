@@ -62,19 +62,19 @@ shared_ptr<DoubleLinkedListNode<G>> DoubleLinkedListNode<G>::getPrev() //!< Gets
 }
 
 template<class G>
-void DoubleLinkedListNode<G>::setData(G newData)
+void DoubleLinkedListNode<G>::setData(G newData) //!< Sets the nodes data
 {
 	data = newData;
 }
 
 template<class G>
-void DoubleLinkedListNode<G>::setNext(shared_ptr<DoubleLinkedListNode<G>> newNext) //!< Sets the next node in the list:
+void DoubleLinkedListNode<G>::setNext(shared_ptr<DoubleLinkedListNode<G>> newNext) //!< Sets the next node in the list
 {
 	next = newNext;
 }
 
 template<class G>
-void DoubleLinkedListNode<G>::setPrev(shared_ptr<DoubleLinkedListNode<G>> newPrev) //!< Sets the previous node in the list:
+void DoubleLinkedListNode<G>::setPrev(shared_ptr<DoubleLinkedListNode<G>> newPrev) //!< Sets the previous node in the list
 {
 	prev = newPrev;
 }
