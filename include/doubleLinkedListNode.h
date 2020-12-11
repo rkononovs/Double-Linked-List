@@ -25,6 +25,7 @@ public:
 	shared_ptr<DoubleLinkedListNode<G>> getPrev();
 
 	//! Node setters
+	void setData(G newData);
 	void setNext(shared_ptr<DoubleLinkedListNode<G>> newNext);
 	void setPrev(shared_ptr<DoubleLinkedListNode<G>> newPrev);
 };
@@ -58,6 +59,12 @@ template<class G>
 shared_ptr<DoubleLinkedListNode<G>> DoubleLinkedListNode<G>::getPrev() //!< Gets the prvious node in the list
 {
 	return prev;
+}
+
+template<class G>
+void DoubleLinkedListNode<G>::setData(G newData)
+{
+	data = newData;
 }
 
 template<class G>

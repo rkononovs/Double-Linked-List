@@ -42,7 +42,8 @@ public:
     void getCurrent();
     void getBack();
 
-    void sortList(); //!< Sort the list
+    void sortList(); //!< Sort the list using bubble sort
+    void swapData(G& data1 , G& data2); //!< Swaps data between two nodes - same as std::swap except with G template and not T
     void printList(); //!< Print whole list without popping anything (useful to see sorting)
     unsigned int getSize(); //!< Size getter
     bool empty();
@@ -319,8 +320,46 @@ void DoubleLinkedList<G>::getBack() //!< Function that returns back's/tail's nod
 }
 
 template<class G>
-void DoubleLinkedList<G>::sortList()
+void DoubleLinkedList<G>::sortList() //!< Sort the list using bubble sort
 {
+    bool swapped; //!< Checks if list is swapped
+    shared_ptr<DoubleLinkedListNode<G>> nullNode = NULL; //!< Temp pointer for null
+    shared_ptr<DoubleLinkedListNode<G>> start = back; //!< Start of the sort
+    shared_ptr<DoubleLinkedListNode<G>> nextPointer = start; //!< Next pointer to swap
+    shared_ptr<DoubleLinkedListNode<G>> largPointer = NULL; //!< Largest pointer
+    if (empty()) { //!< If list empty print generic message
+        cout << "List is empty. Nothing to sort" << endl;
+    }
+    else {
+        do { //!< Swap till all list is sorted
+            nextPointer = start; //!< assign next pointer as start
+            swapped = false; //!< swapped as false for default
+            while (nextPointer->getNext() != largPointer) { //!< Check if next pointer is larger then largest
+                if (nextPointer->getNext() != nullNode) { //!< If next pointer is not null
+                    G value = nextPointer->getData(); //!< Assign a currents pointers data value
+                    G value2 = nextPointer->getNext()->getData(); //!< Assign next pointers data value
+                    if (value > value2) { //!< Compare them
+                        swapData(value, value2); //!< Swap them
+                        swapped = true; //!< Make swapped as true and don't breake while loop
+
+                        nextPointer->setData(value); //!< Set pointers data value as swapped value
+                        nextPointer->getNext()->setData(value2); //!< Set next pointers data value as swapped value
+                    }
+                }
+                nextPointer = nextPointer->getNext(); //!< Change pointer to next pointer
+            }
+            largPointer = nextPointer; //!< Change it as largest pointer
+
+        } while (swapped); //!< drop the loop when everything is swapped/sorted
+    }
+}
+
+template<class G>
+void DoubleLinkedList<G>::swapData(G& t1, G& t2) //!< Standart std::swap implementation with G template and not T template
+{
+    G temp = std::move(t1); // or T temp(std::move(t1));
+    t1 = std::move(t2);
+    t2 = std::move(temp);
 }
 
 template<class G>
